@@ -1,0 +1,25 @@
+<h2>Import Questions</h2>
+
+<%= form_tag import_questions_path, multipart: true do %>
+  <%= file_field_tag :file, required: true %>
+  <%= submit_tag "Import" %>
+<% end %>
+
+<% if @questions.present?%>
+  <table id="questions">
+    <tr>
+      <th>Priority</th>
+      <th>Question</th>
+      <th>Role</th>
+      <th>Mapping</th>
+    </tr>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.priority %></td>
+        <td><%= question.question %></td>
+        <td><%= question.role.title %></td>
+        <td><%= question.mapping.title %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
